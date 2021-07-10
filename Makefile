@@ -10,3 +10,6 @@ commit: ## Simple commit
 
 clean:
 	find . -name __pycache__ -print0 | xargs -0 sudo rm -rf
+
+run_server: ## Run Api
+	uvicorn api.main:app --reload
