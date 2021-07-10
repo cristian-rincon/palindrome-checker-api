@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 # Vscode stuff
+.vscode
