@@ -7,3 +7,6 @@ commit: ## Simple commit
 	git add .
 	git commit
 	git push
+
+clean:
+	find . -name __pycache__ -print0 | xargs -0 sudo rm -rf
