@@ -1,3 +1,5 @@
+"""Main module."""
+from typing import Dict
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
@@ -7,19 +9,20 @@ from .utils import longest_palindrome
 app = FastAPI()
 
 
-@app.get('/')
-async def home():
+@app.get("/")
+async def home() -> RedirectResponse:
     """Root path, redirects to OpenAPI docs"""
-    return RedirectResponse('/docs')
+    return RedirectResponse("/docs")
 
 
-@app.get('/ping')
-async def ping():
+@app.get("/ping")
+async def ping() -> Dict:
     """Healthcheck endpoint"""
-    return {'message': 'pong'}
+    return {"message": "pong"}
 
 
-@app.post('/palindrome', response_model=PalindromeModel)
-async def longest_palindrome_of_text(paragraph: PalindromeModel):
-    response = {'text': longest_palindrome(paragraph.text)}
+@app.post("/palindrome", response_model=PalindromeModel)
+async def longest_palindrome_of_text(paragraph: PalindromeModel) -> Dict[str, str]:
+    """Returns the longest palindrome of the given text."""
+    response = {"text": longest_palindrome(paragraph.text)}
     return response
