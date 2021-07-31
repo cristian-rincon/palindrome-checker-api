@@ -19,7 +19,7 @@ async def ping():
     return {'message': 'pong'}
 
 
-@app.post('/palindromo', response_model=PalindromeModel)
+@app.post('/palindrome', response_model=PalindromeModel)
 async def longest_palindrome_of_text(paragraph: PalindromeModel):
     response = {'text': longest_palindrome(paragraph.text)}
     return response
